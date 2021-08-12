@@ -44,10 +44,10 @@ export default function Nav() {
                 <div className="hidden sm:block sm:ml-6">
                   <Router>
                   <div className="flex space-x-4">
-                    <a href="/dashboard" >Dashboard</a>
-                    <a href="/team">Team</a>
-                    <a href="/projects">Projects</a>
-                    <a href="/leads">Leads</a>
+                    <a href="/dashboard" className="text-white" >Dashboard</a>
+                    <a href="/team" className="text-white">Team</a>
+                    <a href="/projects" className="text-white">Projects</a>
+                    <a href="/leads" className="text-white">Leads</a>
                   </div>
                   </Router>
                 </div>

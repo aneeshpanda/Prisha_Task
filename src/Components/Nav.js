@@ -3,11 +3,12 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
-const navigation = [
-  { name: 'dashboard', href: '#', current: true },
-  { name: 'team', href: '#', current: false },
-  { name: 'projects', href: '#', current: false },
-  { name: 'leads', href: '#', current: false },
+var navigation = [
+  { name: 'Dashboard', href: '/', current: true },
+  { name: 'Add Leads', href: 'leads', current: false },
+  { name: 'Lead Status', href: 'leadstatus', current: false },
+  { name: 'Commission Payout', href: 'commission', current: false },
+
 ]
 
 function classNames(...classes) {
@@ -39,18 +40,28 @@ export default function Nav() {
                     src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                     alt="Workflow"
                   /> <a className="text-white text-2xl font-bold ml-4">GoFidget</a>
-                  
+
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <Router>
-                  <div className="flex space-x-4">
-                    <a href="/dashboard" className="text-white" >Dashboard</a>
-                    <a href="/team" className="text-white">Team</a>
-                    <a href="/projects" className="text-white">Projects</a>
-                    <a href="/leads" className="text-white">Leads</a>
-                  </div>
+                    <div className="flex space-x-4">
+                      {navigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className={classNames(
+                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            'px-3 py-2 rounded-md text-sm font-medium'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
                   </Router>
                 </div>
+
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">

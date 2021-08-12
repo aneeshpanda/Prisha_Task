@@ -8,15 +8,22 @@ export default function Leads() {
     const [type, setType] = useState('')
     const addData = (e) => {
       e.preventDefault()
-  
-      setData([
-        ...data,
-        { name, email, phone, type }
-      ])
-      setName('')
-      setEmail('')
-      setPhone('')
-      setType('')
+      if( name, email, phone, type != '')
+      {
+        setData([
+          ...data,
+          { name, email, phone, type }
+        ])
+        setName('')
+        setEmail('')
+        setPhone('')
+        setType('')
+      }
+
+      else{
+        alert("Please enter all the fields!")
+      }
+
     }
     return (
       <div>
@@ -69,7 +76,8 @@ export default function Leads() {
             <select
               id="type"
               name="type"
-              className="block w-full pl-1 mb-5 pr-1 sm:text-sm border-white bg-white rounded-md" value={type} onClick={(e) => setType(e.target.value)}>
+              className="block w-full pl-1 mb-5 pr-1 sm:text-sm border-white bg-white rounded-md" value={type} onChange={(e) => setType(e.target.value)}>
+              <option className="block w-full pl-1 mb-5 pr-1 sm:text-sm border-white bg-white rounded-md" disabled selected value="">Select Your Insurance Type</option>
               <option className="block w-full pl-1 mb-5 pr-1 sm:text-sm border-white bg-white rounded-md">Car</option>
               <option className="block w-full pl-1 mb-5 pr-1 sm:text-sm border-white bg-white rounded-md">Bike</option>
               <option className="block w-full pl-1 mb-5 pr-1 sm:text-sm border-white bg-white rounded-md">Home</option>
